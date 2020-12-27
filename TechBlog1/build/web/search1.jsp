@@ -19,8 +19,8 @@
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="Blogwritter.html">Write a Blog</a>
-  <a href="index.html">Logout</a>
+  <a href="Blogwritter.jsp>Write a Blog</a>
+  <a href="index.jsp">Logout</a>
   
   
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -32,6 +32,7 @@
 <div class="bg-image img1"></div>
 
 <div class="bg-text">
+    
 <h2><b>Search By:</b>
 <br>
 <h4> Blog Name || Categories</h4>
