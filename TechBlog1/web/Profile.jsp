@@ -65,7 +65,7 @@ ResultSet rs=null;
    
    String email= sessio.getAttribute("email").toString();
   String phone= sessio.getAttribute("phone").toString();
-   out.print(phone);
+  // out.print(phone);
    try { 
    
                     Class.forName("com.mysql.jdbc.Driver");
@@ -101,7 +101,16 @@ while(rs.next())
 <h1> Howdy <% %> <%=rs.getString("username")%> </h1>
 <%}%>
 
+
+
+
 <%
+rs=st.executeQuery("select email from usertbl where phone='"+phone+"' ");
+ while (rs.next()){
+     email=rs.getString("email");
+ }
+
+
 rs=st.executeQuery("SELECT COUNT(email) FROM content where email='"+email+"'");
 int count=0;
 while(rs.next()){
@@ -114,10 +123,18 @@ while(rs.next()){
 
 
 <%
+
+ 
+
+out.print(phone);
 out.print(count);
 out.print(email);
+//String q="SELECT * FROM content INNER JOIN usertbl ON  usertbl.phone='"+phone+"' AND content.email='"+email+"'";
+rs=st.executeQuery("select * from content where email='"+email+"' ");
 
- rs=st.executeQuery("select * from content where email='"+email+"' ");
+// rs=st.executeQuery(q);
+
+
  for (int i=0; i<count;i++){
 while(rs.next())
 {          
@@ -128,9 +145,7 @@ while(rs.next())
 
 <div class="row">
 
-<%
 
-%>
 
 
 
@@ -142,6 +157,7 @@ while(rs.next())
         <p class="title"><%=rs.getString("aboutme")%></p>
         <p><%=rs.getString("description")%></p>
         <p><%=rs.getString("email")%></p>
+        <p><%=phone%></p>
 		<form method="get" action="userprofilefull.jsp">
                     <%
                     String s1=new String();

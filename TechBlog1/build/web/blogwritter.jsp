@@ -49,7 +49,8 @@ msg=request.getParameter("msg");
 
 HttpSession se=request.getSession();
 msg= se.getAttribute("email").toString();
-
+String msg1=se.getAttribute("phone").toString();
+ out.print(msg1);
 %>
 	
     </div>
@@ -73,11 +74,7 @@ msg= se.getAttribute("email").toString();
   
   <select name="categories">
   
- <%
  
-    
-    
- %>
     <option value="AI" >Artificial Intelligence</option>
     <option value="IT">IT and Education</option>
     <option value="robot">Robotics</option>

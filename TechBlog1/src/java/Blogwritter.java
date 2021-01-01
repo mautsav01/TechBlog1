@@ -45,12 +45,14 @@ public class Blogwritter extends HttpServlet {
             String cat=request.getParameter("categories");
             String privacy=request.getParameter("privacy");
             String footer=request.getParameter("footer");
-           out.print(blogname+titledescription+blog+aboutme+description+cat+privacy+footer);
+       //    out.print(blogname+titledescription+blog+aboutme+description+cat+privacy+footer);
             HttpSession sessio=request.getSession();
           String email=  sessio.getAttribute("email").toString();
-          
+          String phone= sessio.getAttribute("phone").toString();
            //  out.print(blogname+titledescription+blog+aboutme+description+cat+privacy+footer+email);
-           //  out.print(email);
+            out.print(email);
+            out.print(phone);
+            
         
            
             Class.forName("com.mysql.jdbc.Driver");
@@ -69,7 +71,7 @@ public class Blogwritter extends HttpServlet {
             pst.setString(7, privacy);
             pst.setString(8, footer);
             pst.setString(9, email);
-            
+            //pst.setString(10, phone);
             
             int rs=pst.executeUpdate();
             if(rs>0){

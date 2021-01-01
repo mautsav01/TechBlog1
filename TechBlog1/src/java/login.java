@@ -48,7 +48,7 @@ public class login extends HttpServlet {
              
              
              String email=request.getParameter("email").toString();
-        //     String phone=request.getParameter("email").toString();
+            String phone=request.getParameter("email").toString();
              String password=request.getParameter("password").toString();
              
              String pass = PasswordEnc.encryptPassword(password);
@@ -68,10 +68,12 @@ public class login extends HttpServlet {
             
              ResultSet rs = st.executeQuery();
             if(rs.next()){
-           
+                phone=rs.getString("phone");
+           email=rs.getString("email");
          HttpSession sessio=request.getSession();
+        // String email1=null, phone1=null;
     sessio.setAttribute("email", email);
-    sessio.setAttribute("phone", email);
+    sessio.setAttribute("phone", phone);
     
     
              response.sendRedirect("Profile.jsp");
