@@ -48,7 +48,7 @@ public class login extends HttpServlet {
              
              
              String email=request.getParameter("email").toString();
-             String phone=request.getParameter("email").toString();
+        //     String phone=request.getParameter("email").toString();
              String password=request.getParameter("password").toString();
              
              String pass = PasswordEnc.encryptPassword(password);
@@ -71,12 +71,14 @@ public class login extends HttpServlet {
            
          HttpSession sessio=request.getSession();
     sessio.setAttribute("email", email);
+    sessio.setAttribute("phone", email);
+    
     
              response.sendRedirect("Profile.jsp");
          
             }else{
             
-             response.sendRedirect("login.jsp?msg= Email phone number or password is incorrect");
+             response.sendRedirect("login.jsp?msg= Email phone number or password is incorrect"+email);
             
             } 
            

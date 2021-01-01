@@ -85,6 +85,7 @@ public class signup extends HttpServlet {
                 
                  HttpSession sessio=request.getSession();
     sessio.setAttribute("email", email);
+    sessio.setAttribute("phone", phone);
     
                 response.sendRedirect("blogwritter.jsp");
          

@@ -60,10 +60,14 @@
 </div>
 
     <%
-
+ResultSet rs=null;
     HttpSession sessio=request.getSession();
+   
    String email= sessio.getAttribute("email").toString();
-   try {
+  String phone= sessio.getAttribute("phone").toString();
+   out.print(phone);
+   try { 
+   
                     Class.forName("com.mysql.jdbc.Driver");
                 } catch (ClassNotFoundException ex) {
                   out.println("exxxxxxxxxxxxxxxxxxxxxxxxxxx"+ex); 
@@ -72,9 +76,20 @@
       Connection  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/user", "root", "");
       
  Statement st=con.createStatement();
- //String sql1="SELECT usertbl.username FROM usertbl INNER JOIN Content ON usertbl.email = Content.email where ";
  
-ResultSet rs=st.executeQuery("select * from usertbl where email='"+email+"' ");
+ if (phone!=null){
+  rs=st.executeQuery("select email from usertbl where  phone='"+phone+"' ");
+  while(rs.next())
+{
+   email=rs.getString("email");
+}
+  
+ 
+ }
+ 
+ 
+ 
+ rs=st.executeQuery("select * from usertbl where email='"+email+"' or phone='"+phone+"' ");
 while(rs.next())
 {          
    
