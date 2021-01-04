@@ -22,6 +22,7 @@
   <a href="#home">Home</a>
   <a href="login.jsp">Login</a>
   <a href="signup.jsp">Signup</a>
+  <a href="search.jsp">Search</a>
   
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
@@ -33,29 +34,29 @@
 <br><br>
 <div class="row"> 
   <div class="col-sm-2">
-  <a href="search.jsp" style="text-decoration: none">  <img src="image/AI.png" style="width:98%"><h4> <Center>Artificial Intelligence</center></h4> </a>
+  <a href="search.jsp?msgindex=AI" style="text-decoration: none">  <img src="image/AI.png" style="width:98%"><h4> <Center>Artificial Intelligence</center></h4> </a>
     
     
   </div>
   <div class="col-sm-2">
-  <a href="search.jsp" style="text-decoration: none">  <img src="image/communication.png" style="width:100%"><h4> <Center>Communication</center></h4> </a>
+  <a href="search.jsp?msgindex=ct" style="text-decoration: none">  <img src="image/communication.png" style="width:100%"><h4> <Center>Communication</center></h4> </a>
     
   </div>  
   <div class="col-sm-2">
-  <a href="search.jsp" style="text-decoration: none">  <img src="image/humanoid.png" style="width:100%"> <h4> <Center>Humanoid</center></h4></a>
+  <a href="search.jsp?msgindex=humanoid" style="text-decoration: none">  <img src="image/humanoid.png" style="width:100%"> <h4> <Center>Humanoid</center></h4></a>
     
   </div>
   <div class="col-sm-2">
-  <a href="search.jsp" style="text-decoration: none">  <img src="image/ITE.png" style="width:100%"> <h4> <Center>IT and Education</center></h4></a>
+  <a href="search.jsp?msgindex=IT" style="text-decoration: none">  <img src="image/ITE.png" style="width:100%"> <h4> <Center>IT and Education</center></h4></a>
     
   </div>
    <div class="col-sm-2">
-  <a href="search.jsp" style="text-decoration: none">  <img src="image/quantum.png" style="width:90%"> <h4> <Center>Quantum Computing</center></h4></a>
+  <a href="search.jsp?msgindex=quantum" style="text-decoration: none">  <img src="image/quantum.png" style="width:90%"> <h4> <Center>Quantum Computing</center></h4></a>
     
     
   </div>
   <div class="col-sm-2">
-  <a href="search.jsp" style="text-decoration: none">  <img src="image/robotics.png" style="width:100%"> <h4> <Center>Robotics</center></h4></a>
+  <a href="search.jsp?msgindex=robot" style="text-decoration: none">  <img src="image/robotics.png" style="width:100%"> <h4> <Center>Robotics</center></h4></a>
     
     
     
