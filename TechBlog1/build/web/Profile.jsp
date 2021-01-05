@@ -99,6 +99,19 @@ while(rs.next())
 
 
 <h1> Howdy <% %> <%=rs.getString("username")%> </h1>
+
+<%
+String username=rs.getString("username");
+
+ HttpSession sessi=request.getSession();
+        // String email1=null, phone1=null;
+    sessi.setAttribute("user", username);
+   
+
+%>
+
+
+
 <%}%>
 
 

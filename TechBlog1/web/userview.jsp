@@ -1,4 +1,8 @@
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <html>
 <head>
 <link rel="stylesheet" href="assets/css/userprofile.css">
@@ -13,52 +17,86 @@
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="profile.html">Profile page</a>
-  <a href="search.html">Search page</a>
+  <a href="profile.jsp">Profile page</a>
+  <a href="search1.jsp">Search page</a>
   
-  <a href="login.html">Logout</a>
+  <a href="login.jsp">Logout</a>
   
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars">++</i>
   </a>
 </div>
 
+    <%
+    
+    String ww=request.getParameter("msg1");
+    if(ww!=null){
+    out.print(ww);
+    
+    }
+    
+    %>
+    
+    
+    
+<%
+HttpSession sessi=request.getSession();
+        // String email1=null, phone1=null;
+  String user=  sessi.getAttribute("user").toString();
+   
 
+
+String id=request.getParameter("msg");
+
+if(id==null){
+out.print("Something went wrong!!!");
+}
+//out.print(msg);
+//String privacy="public";
+
+    Class.forName("com.mysql.jdbc.Driver");
+             
+             Connection  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/user", "root", "");
+             
+ //            String query = "Select categories from content where categories='"+msgindex+"' and privary=public ";
+  
+              Statement st=con.createStatement();
+  ResultSet rs=null;
+  
+   
+rs=st.executeQuery("Select * from content where id='"+id+"'");
+
+
+
+
+
+         // int i=1;
+    while (rs.next()) {
+          
+
+
+
+
+
+%>
 
 
 
 
 <div class="header">
-  <h2>Blog Name</h2>
+  <h2><%=rs.getString("Blogname")%></h2>
   
 </div>
 
 <div class="row">
   <div class="leftcolumn">
     <div class="card">
-      <h2>TITLE HEADING</h2>
-      <h5>Categories</h5>
-      <p>Some text..</p>
+      <h2><%=rs.getString("titledescription")%></h2>
+      <h5>Public</h5>
+      <br><br>
+      <p><%=rs.getString("blog")%></p>
       <p>
 	  
-	  Albert Einstein, (born March 14, 1879, Ulm, Württemberg, Germany—died April 18, 1955, Princeton, New Jersey, U.S.), German-born physicist who developed the special and general theories of relativity and won the Nobel Prize for Physics in 1921 for his explanation of the photoelectric effect.Apr 14, 2020
-Born: March 14, 1879, Ulm
-Parents: Hermann Einstein, Pauline Koch
-Sibling: Maria, Maja Einstein
-Profession: Physicist, AuthorAlbert Einstein, (born March 14, 1879, Ulm, Württemberg, Germany—died April 18, 1955, Princeton, New Jersey, U.S.), German-born physicist who developed the special and general theories of relativity and won the Nobel Prize for Physics in 1921 for his explanation of the photoelectric effect.Apr 14, 2020
-Born: March 14, 1879, Ulm
-Parents: Hermann Einstein, Pauline Koch
-Sibling: Maria, Maja Einstein
-Profession: Physicist, AuthorAlbert Einstein, (born March 14, 1879, Ulm, Württemberg, Germany—died April 18, 1955, Princeton, New Jersey, U.S.), German-born physicist who developed the special and general theories of relativity and won the Nobel Prize for Physics in 1921 for his explanation of the photoelectric effect.Apr 14, 2020
-Born: March 14, 1879, Ulm
-Parents: Hermann Einstein, Pauline Koch
-Sibling: Maria, Maja Einstein
-Profession: Physicist, Author
-Albert Einstein, (born March 14, 1879, Ulm, Württemberg, Germany—died April 18, 1955, Princeton, New Jersey, U.S.), German-born physicist who developed the special and general theories of relativity and won the Nobel Prize for Physics in 1921 for his explanation of the photoelectric effect.Apr 14, 2020
-Born: March 14, 1879, Ulm
-Parents: Hermann Einstein, Pauline Koch
-Sibling: Maria, Maja Einstein
-Profession: Physicist, Author
 	  </P></div>
 	
 
@@ -67,16 +105,10 @@ Profession: Physicist, Author
     </div>
   <div class="rightcolumn">
     <div class="card">
-      <h2>About Me</h2>
-      <p>Albert Einstein, (born March 14, 1879, Ulm, Württemberg, Germany—died April 18, 1955, Princeton, New Jersey, U.S.), German-born physicist who developed the special and general theories of relativity and won the Nobel Prize for Physics in 1921 for his explanation of the photoelectric effect.Apr 14, 2020
-Born: March 14, 1879, Ulm
-Parents: Hermann Einstein, Pauline Koch
-Sibling: Maria, Maja Einstein
-Profession: Physicist, Author
-
-	  
-	  
-	  </p>
+        <b><%=rs.getString("email")%> </b>
+      <p><%=rs.getString("description")%>  </p>
+      <p><%=rs.getString("aboutme")%>  </p>
+      
     </div>
    
    </div>
@@ -86,12 +118,17 @@ Profession: Physicist, Author
   
    
    <div class="footer">
-  <h2>Footer</h2>
+  <h2><%=rs.getString("Footer")%></h2>
 </div>
 </div>
 
+<%
+}
 
+%>
 
+   
+   
 
 
 
@@ -102,29 +139,93 @@ Profession: Physicist, Author
    <div class="col-lg-4">
    <div class="footer">
    
-   
+  
 <button id="clickme">like</button>
+</div>       
 </div>
-</div>
+
+       
+       
 <div class="col-lg-4">
 
  <div class="footer">
   
-   <p> comment is displayed here</p>
-<form>
-<br>
-<textarea>Write a comment here</textarea>
-<br><br>
-<input type="submit" value="Comment"></input>
-</div></div>
- <div class="col-lg-4">
-
- <div class="footer">
   
-  <p>view</P>
-</div>
+     <h1>
+         Howdy  <mark><%=user%></mark>
+   </h1>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+<%
+
+
+
+rs=st.executeQuery("Select * from review");
+  while (rs.next()) {
+  
+
+
+%> 
+   
+ 
+   
+   
+   
+<form method="Post" action="${pageContext.request.contextPath}/Comment">
+<br>
+<b><%=rs.getString("username")%></b>
+<br>
+<%=rs.getString("comment")%>
+<br>
+  
+
+<%}%>
+
+<textarea name="Comment"></textarea>
+
+
+
+
+<input type="hidden" name="id" value=<%=id%>>
+
+
+<br><br>
+
+
+
+
+
+
+<input type="submit" value="Comment"></input>
+
+    
+   
+   
+   
+ 
 </form>
+   
+</div> 
 </div>
+                    <div class="col-lg-4">
+   <div class="footer">
+   
+  
+<button id="clickme">Views</button>
+</div>
+       
+       
+       
+</div>
+       
    </div>
    
 
@@ -146,6 +247,8 @@ if(count==0){
   else if(count==1){
   count=count-1;
   button.innerHTML = "like: " + count;
+  
+  
   }
   
 };

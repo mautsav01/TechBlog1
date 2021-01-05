@@ -68,7 +68,7 @@ function myFunction() {
 
  
                                     
-                                        <%
+ <%
 
 String msgindex=request.getParameter("msgindex");
 //out.print(msgindex);
@@ -94,7 +94,7 @@ rs=st.executeQuery("Select * from content where categories='"+msgindex+"' AND pr
           
            
         
-        %>
+  %>
        
         
 <section class="content16 cid-siDU9c22MR" id="content16-9">
