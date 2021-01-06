@@ -75,13 +75,14 @@ public class Comment extends HttpServlet {
             
             PreparedStatement pst=null;
             
-            pst = con.prepareStatement ("Insert into review(likkes,comment,views,username) values (?,?,?,?)");
+            pst = con.prepareStatement ("Insert into review(likkes,comment,views,username,id) values (?,?,?,?,?)");
         
             pst.setString(1 ,b);
             pst.setString(2, comment);
             pst.setString(3,email);
           
             pst.setString(4, user);
+            pst.setString(5, id);
                out.print(b+"  ....    "+comment+"    .... "+email+" ....       " +user+" .....  "+id);
         
              int rs=pst.executeUpdate();

@@ -83,7 +83,7 @@ String privacy="public";
   ResultSet rs=null;
   
    
-rs=st.executeQuery("Select * from content where categories='"+msgindex+"' AND privacy='"+privacy+"' OR blogname LIKE '%"+msgindex+"%' AND privacy='"+privacy+"'");
+rs=st.executeQuery("Select * from content where categories LIKE '%"+msgindex+"%' AND privacy='"+privacy+"' OR blogname LIKE '%"+msgindex+"%' AND privacy='"+privacy+"'");
 
 
 

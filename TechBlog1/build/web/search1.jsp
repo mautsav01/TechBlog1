@@ -23,8 +23,8 @@
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="Blogwritter.jsp>Write a Blog</a>
-  <a href="index.jsp">Logout</a>
+  <a href="blogwritter.jsp">Write a Blog</a>
+  <a href="login.jsp">Logout</a>
   
   
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -83,7 +83,7 @@ function myFunction() {
   ResultSet rs=null;
   
    
-rs=st.executeQuery("Select * from content where categories='"+msgindex+"' AND privacy='"+privacy+"' OR blogname LIKE '%"+msgindex+"%' AND privacy='"+privacy+"'");
+rs=st.executeQuery("Select * from content where categories lIKE '%"+msgindex+"%' AND privacy='"+privacy+"' OR blogname LIKE '%"+msgindex+"%' AND privacy='"+privacy+"'");
 
 
 

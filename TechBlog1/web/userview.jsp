@@ -17,7 +17,7 @@
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="profile.jsp">Profile page</a>
+  <a href="Profile.jsp">Profile page</a>
   <a href="search1.jsp">Search page</a>
   
   <a href="login.jsp">Logout</a>
@@ -67,21 +67,8 @@ out.print("Something went wrong!!!");
 rs=st.executeQuery("Select * from content where id='"+id+"'");
 
 
-
-
-
-         // int i=1;
     while (rs.next()) {
-          
-
-
-
-
-
 %>
-
-
-
 
 <div class="header">
   <h2><%=rs.getString("Blogname")%></h2>
@@ -127,12 +114,6 @@ rs=st.executeQuery("Select * from content where id='"+id+"'");
 
 %>
 
-   
-   
-
-
-
-
    </div>
    
    <div class="row">
@@ -141,6 +122,8 @@ rs=st.executeQuery("Select * from content where id='"+id+"'");
    
   
 <button id="clickme">like</button>
+
+
 </div>       
 </div>
 
@@ -153,65 +136,96 @@ rs=st.executeQuery("Select * from content where id='"+id+"'");
   
      <h1>
          Howdy  <mark><%=user%></mark>
+         
    </h1>
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-<%
+         
+         <script>
 
 
-
-rs=st.executeQuery("Select * from review");
-  while (rs.next()) {
+var button = document.getElementById("clickme"),
+  count = 0;
   
+button.onclick = function() {
 
+if(count==0){
+  count += 1;
+  
+  
+  button.innerHTML =  count;
+ }
+  else if(count==1){
+  count=count-1;
+  button.innerHTML =  count;
+  
+  
+  }
+  
+};
 
-%> 
-   
- 
-   
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+
+</script>
+
+         
+         
    
    
 <form method="Post" action="${pageContext.request.contextPath}/Comment">
 <br>
-<b><%=rs.getString("username")%></b>
+<b></b>
 <br>
-<%=rs.getString("comment")%>
 <br>
-  
 
-<%}%>
 
-<textarea name="Comment"></textarea>
+
+
+<textarea name="Comment" required="required"></textarea>
 
 
 
 
 <input type="hidden" name="id" value=<%=id%>>
+<input type="hidden" name="likes" value=count>
 
 
 <br><br>
 
-
-
-
-
-
 <input type="submit" value="Comment"></input>
-
-    
-   
-   
-   
  
 </form>
+
+
+<%
+
+
+
+rs=st.executeQuery("Select * from review where id='"+id+"'");
+  while (rs.next()) {
+  
+
+  
+%> 
+<b>
+   <%
+   String comment=rs.getString("comment");
+   if(comment==" "){
+   response.sendRedirect("userview.jsp?msg="+id);
+   }else{
+   %>
+   <%=rs.getString("username")%>
+ 
+</b><br>
+   <%=rs.getString("comment")%>
+   <br><hr>
+ <%}}%>
+
    
 </div> 
 </div>
@@ -229,45 +243,8 @@ rs=st.executeQuery("Select * from review");
    </div>
    
 
-
 </body>
 
-<script>
-
-
-var button = document.getElementById("clickme"),
-  count = 0;
-  
-button.onclick = function() {
-
-if(count==0){
-  count += 1;
-  button.innerHTML = "liked: " + count;
- }
-  else if(count==1){
-  count=count-1;
-  button.innerHTML = "like: " + count;
-  
-  
-  }
-  
-};
-
-function myFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
-
-
-
-
-
-
-</script>
 
 
 
