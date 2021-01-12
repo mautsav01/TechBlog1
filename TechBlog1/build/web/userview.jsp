@@ -277,8 +277,6 @@ function myFunction() {
    
 <form method="Post" action="${pageContext.request.contextPath}/Comment">
 <br>
-<b></b>
-<br>
 <br>
 
 

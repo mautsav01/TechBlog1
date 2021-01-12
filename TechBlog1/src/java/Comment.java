@@ -35,12 +35,64 @@ public class Comment extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-    }
+        
+        
+          try {
+            processRequest(request, response);
+            PrintWriter out = response.getWriter();
+            
+            
+            String comment=request.getParameter("Comment");
+       //     out.print(Comment);
+            String id=request.getParameter("id");
+          //  out.print(id);
+               HttpSession sessio=request.getSession();
+        // String email1=null, phone1=null;
+    String email=sessio.getAttribute("email").toString();
+ //  sessio.invalidate();
+              HttpSession sessi=request.getSession();
+            String user=  sessi.getAttribute("user").toString();
+              String b="0";
+              
+              out.print(comment+id+email+user);
+      //    sessi.invalidate();
+           
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Comment.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            Connection  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/user", "root", "");
+            
+            PreparedStatement pst=null;
+            
+            pst = con.prepareStatement ("Insert into review(likkes,comment,views,username,id) values (?,?,?,?,?)");
+        
+            pst.setString(1 ,b);
+            pst.setString(2, comment);
+            pst.setString(3,email);
+          
+            pst.setString(4, user);
+            pst.setString(5, id);
+         
+             int rs=pst.executeUpdate();
+            if(rs>0){
+                
+                response.sendRedirect("userprofilefull.jsp?id="+id);
+                
+                
+            }else{
+                out.println("user  not added");
+                
+            }
+        
+            
+        } catch (SQLException ex) {
+           System.out.println(ex);
+        }
 
-  
-    
-    
-    
+    }
     
     
     

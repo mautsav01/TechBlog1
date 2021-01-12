@@ -35,10 +35,12 @@
     int id=Integer.parseInt(request.getParameter("id"));;
     
     
-    
-    int emailcoun=0;
+   // out.print(id);
+   
     int likecoun=0;
+    int viewcount=0;
     
+    int id1=0;
     
     
     %>
@@ -52,25 +54,25 @@
           Connection  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/user", "root", "");
         
           
-               String emailcount="select count( Distinct id) from view";  
+               String emailcount="select count( Distinct email) from likes where id="+id;  
                Statement st=con.createStatement();
       rs=st.executeQuery(emailcount);
 
      
 while(rs.next()){
- emailcoun= (rs.getInt(1));
+ likecoun= (rs.getInt(1));
  
 }
  
        
-       String likecount="SELECT likes, '"+id+"', sum(likes) FROM likes group by '"+id+"'";  
+       String likecount="select count( Distinct email) from view where id="+id;  
               
       rs=st.executeQuery(likecount);
 
      
 while(rs.next()){
- likecoun= (rs.getInt(2));
- out.print(likecoun);
+ viewcount= (rs.getInt(1));
+// out.print();
 }
 
           
@@ -166,36 +168,80 @@ while(rs.next()){
    <div class="footer">
   <h2><%=rs.getString("footer")%></h2>
 </div>
-<div class="footer">
 <div class="row">
 <div class="col-lg-4">
+<div class="footer">
     
-     
-<form>
-<input type="text" disabled="disabled" value=<%="Views:_"+emailcoun%>>
-</div>
+    <%
+    id1=rs.getInt("id");
+    %>
+    
+ <%}%>    
+
+<input type="text" disabled="disabled" value=<%="Views:_"+viewcount%>
+</div></div></div>
+
 <div class="col-lg-4">
-<p> comment displayed</P>
+<div class="footer">
+
+
+<form method="get" action="${pageContext.request.contextPath}/Comment">
+
+    <input type="text" hidden="hidden" name="id" value="<%=id%>">
+  <p> comment displayed</P>
 <br>
-<textarea>Write a comment here</textarea>
+<textarea name="Comment" required="required"></textarea>
+
 <br><br>
-<input type="submit" value="Comment"></input>
+<input type="submit" value="Comment">
+<%
+  Class.forName("com.mysql.jdbc.Driver");
+          Connection  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/user", "root", "");
+
+
+  Statement st=con.createStatement();
+
+
+rs=st.executeQuery("Select * from review where id='"+id+"'");
+  while (rs.next()) {
+  
+
+  
+%> 
+<b>
+   
+   <%=rs.getString("username")%>
+ 
+</b><br>
+   <%=rs.getString("comment")%>
+   <br><hr>
+ <%}%>
+
+
+
+
+
+
+</form>
 </div>
 
+</div>
 
 
 <div class="col-lg-4">
     
+    <div class="footer">
+
     
-    
-<p> number of likes </P>
+<p> Number of likes </P>
+</br> <h1><%=likecoun%></h1>
 </div>
-</form>
+</div>
+
 </div>
 
 
-</form>
-</div>
+        
 
 
 
@@ -205,18 +251,18 @@ while(rs.next()){
 
 
 <form method="post" action="${pageContext.request.contextPath}/blogeditor.jsp"> 
-    <input type="hidden" name="id" value="<%=rs.getInt("id")%>">
+    <input type="hidden" name="id" value=<%=id1%>>
 <input type="Submit" value="Edit" >
     
 </form>
     <form method="post" action="DeleteBlog">
         
         
-        <input type="hidden" name="id" value="<%=rs.getInt("id")%>">
+        <input type="hidden" name="id" value="<%=id1%>">
        
     <input type="Submit" value="Delete">
 </form>
-<%}%>
+
 </div>
    </div>
    

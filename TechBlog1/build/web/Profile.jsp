@@ -139,9 +139,9 @@ while(rs.next()){
 
  
 
-out.print(phone);
-out.print(count);
-out.print(email);
+//out.print(phone);
+//out.print(count);
+//out.print(email);
 //String q="SELECT * FROM content INNER JOIN usertbl ON  usertbl.phone='"+phone+"' AND content.email='"+email+"'";
 rs=st.executeQuery("select * from content where email='"+email+"' ");
 
