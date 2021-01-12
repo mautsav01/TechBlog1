@@ -1,4 +1,9 @@
 
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -68,69 +73,76 @@
 <img src="image/author1.jpg">
 </div>
 <div class="col-sm-6">
+    
+    <%
+    ResultSet rs=null;
+    int rand=0;String privacy="public";
+    
+    
+         Class.forName("com.mysql.jdbc.Driver");
+          Connection  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/user", "root", "");
+       Statement st=con.createStatement();
+  
+    rs=st.executeQuery("select * from content where privacy='"+privacy+"' and id="+10);
+
+    while(rs.next()){      
+  
+    %>
+   
 <h1>
-Heading
+<%=rs.getString("blogname")%>
 
 </h1>
-<br>
-<h2>
-Author
-</h2>
-<p>Augmented reality is one of the emerging technology in this modern infrastructure of technology
- which have a huge ideas of itself that tends to bind real world with virtual world in single platform.
- There is vague areas and application of Augmented reality, among them construction industry is one. 
- This proposal focuses on the impact of augmented reality in construction industry. The proper uti
- efficient and faster construction. The concept can also be exchanged between engineers and employee
- the design quality. Another advantage is the collection and editing of any defective design work a
- amounts of money and time. Each process involved in the project is simplified by AR technology, which
- AR has removed all guess work and offers a company concept that integrates reality in virtual terms.
- AR in construction Industry is explained in the proposal by showing the limitation that is still prevalent. 
- The current Augmented Reality situation demonstrates that the use of this technology on mobile devices
- advanced machines that is typically very costly. The use of AR is currently very limited, and the d
- limited, but the reach is increasingly growing and being recognised by all the industry in question. 
- is that the design of the technology for augmented reality should be easy to understand, i.e. intuitive for the user. 
- After all the literature review,
- the potential for further research was seen, especially regarding the implementation of AR technology in the </p>
- <br>
-<i> Footer</i>
-</div>
 
+<h2>
+<%=rs.getString("email")%>
+
+</h2>
+<p>
+    <%=rs.getString("blog")%>
+
+    
+    <br><br>
+<i>  <%=rs.getString("footer")%>
+ </i>
+</div>
+<% } %>
 <div class="col-sm-6" "col-lg-6" "col-md-6">
 <img src="image/author2.png">
 </div>
 <div class="col-sm-6">
+  
+    <%
+   
+        ///    out.println(rand); 
+   
+    
+   rs=st.executeQuery("select * from content where privacy='"+privacy+"' AND id="+10);
+
+    while(rs.next()){      
+    
+    
+    %>
 <h1>
-Heading
+    
+<%=rs.getString("blogname")%>
 
 </h1>
-<br>
+
 <h2>
-Author
+<%=rs.getString("email")%>
 </h2>
-<p>Augmented reality is one of the emerging technology in this modern infrastructure of technology
- which have a huge ideas of itself that tends to bind real world with virtual world in single platform.
- There is vague areas and application of Augmented reality, among them construction industry is one. 
- This proposal focuses on the impact of augmented reality in construction industry. The proper 
- efficient and faster construction. The concept can also be exchanged between engineers and employees on
- the design quality. Another advantage is the collection and editing of any defective design work ar
- amounts of money and time. Each process involved in the project is simplified by AR technology,
- AR has removed all guess work and offers a company concept that integrates reality in virtual terms. T
- AR in construction Industry is explained in the proposal by showing the limitation that is still prevalent. 
- The current Augmented Reality situation demonstrates that the use of this technology on mobile devices is p
- advanced machines that is typically very costly. The use of AR is currently very limited, and the develop
- limited, but the reach is increasingly growing and being recognised by all the industry in question. The
- is that the design of the technology for augmented reality should be easy to understand, i.e. intuitive for the user. 
- After all the literature review,
- the potential for further research was seen, especially regarding the implementation of AR technology in the </p>
- <br>
-<i> Footer</i>
+<p><%=rs.getString("blog")%>
+    <br><br>
+<i> <%=rs.getString("footer")%>
+</i>
 </div>
 
 
 
 
 
-
+<%}%>
 
 
 <script>
