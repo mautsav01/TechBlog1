@@ -1,4 +1,5 @@
 
+<%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
@@ -26,9 +27,68 @@
     <i class="fa fa-bars">++</i>
   </a>
 </div>
+    
+    <%
+         HttpSession sessio=request.getSession();
+ int emailcoun=0;String emails=null; int viewcoun=0;
+ 
+ 
+ 
+  String id= request.getParameter("msg");//ID OF PARTICULAR BLOG
+  
+  
+ 
+HttpSession sessi=request.getSession();
+        String semail=sessi.getAttribute("email").toString();
+ ResultSet rs=null;
+
+Class.forName("com.mysql.jdbc.Driver");
+            Connection  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/user", "root", "");
+            
+  PreparedStatement pst=null;
+  
+  
+  
+  
+  
+   // /VIEW INSERT///////////////////////////////////////////////////////////////////////// //views insert               
+  
+                    String updateTableSQL = "insert into view(id,email) values (?,?)";
+  pst = con.prepareStatement(updateTableSQL);
+      pst.setString(1, id);
+      pst.setString(2, semail);
+   // /VIEW INSERT///////////////////////////////////////////////////////////////////////// //views insert               
+  
+ int rs1=pst.executeUpdate();
+            if(rs1>0){
+   // /VIEW COUNT///////////////////////////////////////////////////////////////////////// //views insert               
+        
+      String viewcount="select count( Distinct email) from view where id="+id;   //emailcount is string for sqlquery
+      rs=pst.executeQuery(viewcount);
+//viewcount
+     
+while(rs.next()){
+     viewcoun= (rs.getInt(1));//this is the result aftercount of views
+   //  out.print(emailcoun);
+            
+}
+            }else{
+                out.print("sww");
+            } 
+   // /VIEW COUNT///////////////////////////////////////////////////////////////////////// //views insert               
+  
+  
+
+   
+%>
+    
+    
+    
+    
 
     <%
-    
+   // /CATCHING ID FROM SOME OTHER PAGES///////////////////////////////////////////////////////////////////////// //views insert               
+   
     String ww=request.getParameter("msg1");
     if(ww!=null){
     out.print(ww);
@@ -40,31 +100,28 @@
     
     
 <%
-HttpSession sessi=request.getSession();
-        // String email1=null, phone1=null;
-  String user=  sessi.getAttribute("user").toString();
-   
-
-
-String id=request.getParameter("msg");
+    
+    
+      ///COMMENT PART//////////////////////////////////
+   String count=null;
+   int a=0;
+String   user=  sessi.getAttribute("user").toString();// USER Id retrived FOR COMMENT AND NAME TO DISPLAY
+ id=request.getParameter("msg");
+    sessio.setAttribute("id", id);
+   // out.print(id);//this id is blog unique id
+ // THIS IS FOR SHOWING ALL CONTENT OF CONTENT IE BLOG IN THE PAGE TO READ///// 
 
 if(id==null){
 out.print("Something went wrong!!!");
 }
-//out.print(msg);
-//String privacy="public";
-
     Class.forName("com.mysql.jdbc.Driver");
              
-             Connection  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/user", "root", "");
-             
- //            String query = "Select categories from content where categories='"+msgindex+"' and privary=public ";
-  
+         
               Statement st=con.createStatement();
-  ResultSet rs=null;
-  
-   
-rs=st.executeQuery("Select * from content where id='"+id+"'");
+  // ID  BLOG ID
+
+   rs=null;
+rs=st.executeQuery("Select * from content where id="+id );
 
 
     while (rs.next()) {
@@ -92,6 +149,7 @@ rs=st.executeQuery("Select * from content where id='"+id+"'");
     </div>
   <div class="rightcolumn">
     <div class="card">
+        <%emails=rs.getString("email");%>
         <b><%=rs.getString("email")%> </b>
       <p><%=rs.getString("description")%>  </p>
       <p><%=rs.getString("aboutme")%>  </p>
@@ -109,10 +167,6 @@ rs=st.executeQuery("Select * from content where id='"+id+"'");
 </div>
 </div>
 
-<%
-}
-
-%>
 
    </div>
    
@@ -120,45 +174,70 @@ rs=st.executeQuery("Select * from content where id='"+id+"'");
    <div class="col-lg-4">
    <div class="footer">
    
+      
+           
   
-<button id="clickme">like</button>
 
+
+<%
+}
+
+%>
+
+
+<%
+/// likes part started
+rs=st.executeQuery("select count( Distinct email) from likes where id="+id);
+   
+//viewcount
+     
+while(rs.next()){
+     emailcoun= (rs.getInt(1));//this is the result aftercount of views
+   //  out.print(emailcoun);
+            
+}
+            
+   
+
+%>
+
+
+
+<button id="clickme">like:<%=emailcoun%></button>
 
 </div>       
 </div>
 
        
-       
-<div class="col-lg-4">
-
- <div class="footer">
-  
-  
-     <h1>
-         Howdy  <mark><%=user%></mark>
-         
-   </h1>
-         
-         <script>
+          <script>
 
 
-var button = document.getElementById("clickme"),
+
+
+var button = document.getElementById("clickme");
   count = 0;
   
 button.onclick = function() {
 
 if(count==0){
   count += 1;
+
   
+  button.innerHTML = "liked:"+ count;
   
-  button.innerHTML =  count;
+  window.location.replace("_userview.jsp?name="+count);
+
  }
   else if(count==1){
   count=count-1;
-  button.innerHTML =  count;
+  button.innerHTML = "like:"+ count;
   
+ window.location.replace("_userview.jsp?name="+count);
+
   
   }
+  
+ 
   
 };
 
@@ -173,8 +252,27 @@ function myFunction() {
 
 </script>
 
+     
+       
+       
+       
+       
+       
+       
+       
+       
+<div class="col-lg-4">
+
+ <div class="footer">
+  
+  
+     <h1>
+         Howdy  <mark><%=user%></mark>
          
+   </h1>
          
+      
+
    
    
 <form method="Post" action="${pageContext.request.contextPath}/Comment">
@@ -191,13 +289,11 @@ function myFunction() {
 
 
 
-<input type="hidden" name="id" value=<%=id%>>
-<input type="hidden" name="likes" value=count>
-
+<input type="hidden" name="id" value=<%=id%>
 
 <br><br>
 
-<input type="submit" value="Comment"></input>
+<input type="submit" value="Comment">
  
 </form>
 
@@ -213,29 +309,28 @@ rs=st.executeQuery("Select * from review where id='"+id+"'");
   
 %> 
 <b>
-   <%
-   String comment=rs.getString("comment");
-   if(comment==" "){
-   response.sendRedirect("userview.jsp?msg="+id);
-   }else{
-   %>
+   
    <%=rs.getString("username")%>
  
 </b><br>
    <%=rs.getString("comment")%>
    <br><hr>
- <%}}%>
+ <%}%>
 
    
 </div> 
 </div>
                     <div class="col-lg-4">
    <div class="footer">
-   
-  
-<button id="clickme">Views</button>
-</div>
        
+       
+   
+   <!here view count is displayed !>
+   
+<button id="clickme">Views<%=" "%><%=viewcoun%></button>
+</div>
+   <!here view count is displayed !>
+<      
        
        
 </div>
@@ -248,6 +343,5 @@ rs=st.executeQuery("Select * from review where id='"+id+"'");
 
 
 
-</style>
 
 </html>

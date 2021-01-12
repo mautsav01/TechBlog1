@@ -83,8 +83,7 @@ public class Comment extends HttpServlet {
           
             pst.setString(4, user);
             pst.setString(5, id);
-               out.print(b+"  ....    "+comment+"    .... "+email+" ....       " +user+" .....  "+id);
-        
+         
              int rs=pst.executeUpdate();
             if(rs>0){
                 

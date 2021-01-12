@@ -1,3 +1,4 @@
+<%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.Statement"%>
@@ -33,17 +34,48 @@
         
     int id=Integer.parseInt(request.getParameter("id"));;
     
+    
+    
+    int emailcoun=0;
+    int likecoun=0;
+    
+    
+    
     %>
     
     <%
     ResultSet rs=null;
+    PreparedStatement pst=null;
      try {
           
          Class.forName("com.mysql.jdbc.Driver");
           Connection  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/user", "root", "");
         
-         Statement st=con.createStatement();
+          
+               String emailcount="select count( Distinct id) from view";  
+               Statement st=con.createStatement();
+      rs=st.executeQuery(emailcount);
+
+     
+while(rs.next()){
+ emailcoun= (rs.getInt(1));
  
+}
+ 
+       
+       String likecount="SELECT likes, '"+id+"', sum(likes) FROM likes group by '"+id+"'";  
+              
+      rs=st.executeQuery(likecount);
+
+     
+while(rs.next()){
+ likecoun= (rs.getInt(2));
+ out.print(likecoun);
+}
+
+          
+          
+    
 rs=st.executeQuery("select * from content where id='"+id+"' ");
 
                 } catch (ClassNotFoundException ex) {
@@ -109,7 +141,7 @@ while(rs.next()){
   </select>
   <br><br>
  </div>
-  </div>
+
   
 	
 	<div class="col-sm">
@@ -140,7 +172,7 @@ while(rs.next()){
     
      
 <form>
-<input type="text" disabled="disabled" value=" 1 view">
+<input type="text" disabled="disabled" value=<%="Views:_"+emailcoun%>>
 </div>
 <div class="col-lg-4">
 <p> comment displayed</P>
@@ -153,6 +185,9 @@ while(rs.next()){
 
 
 <div class="col-lg-4">
+    
+    
+    
 <p> number of likes </P>
 </div>
 </form>
