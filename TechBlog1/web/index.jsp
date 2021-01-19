@@ -83,7 +83,7 @@
           Connection  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/user", "root", "");
        Statement st=con.createStatement();
   
-    rs=st.executeQuery("select * from content where privacy='"+privacy+"' and id="+10);
+    rs=st.executeQuery("select * from content where privacy='"+privacy+"' and id="+42);
 
     while(rs.next()){      
   

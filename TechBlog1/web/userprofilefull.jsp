@@ -22,6 +22,7 @@
   <a href="Profile.jsp">Profile page</a>
   <a href="search1.jsp">Search page</a>
      <a href="login.jsp">Logout</a>
+     
   
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars">++</i>

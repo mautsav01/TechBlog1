@@ -16,14 +16,29 @@
 
 </head>
 <body>
+    <div id="fb-root"></div>
 
+    <%
+    
+     String id= request.getParameter("msg");//ID OF PARTICULAR BLOG
+ 
+    %>
+    
 <div class="topnav" id="myTopnav">
   <a href="Profile.jsp">Profile page</a>
   <a href="search1.jsp">Search page</a>
   
   <a href="login.jsp">Logout</a>
-  
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+<a href="https://twitter.com/intent/tweet?text=http%3A//localhost%3A8084/TechBlog1/userview.jsp?msg=<%=id%>">Share on Twitter</a>  
+
+
+<meta property="og:url"                content="https://www.facebook.com/sharer/sharer.php?u=http%3A//localhost%3A8084/TechBlog1/userview.jsp?msg=10" />
+<meta property="og:type"               content="article" />
+<meta property="og:title"              content="Blog" />
+<meta property="og:description"        content="How much does culture influence creative thinking?" />
+
+<a href="mailto:?subject=Blog&body=http%3A//192.168.1.111%3A8084/TechBlog1/">Send Email</a>
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars">++</i>
   </a>
 </div>
@@ -34,7 +49,6 @@
  
  
  
-  String id= request.getParameter("msg");//ID OF PARTICULAR BLOG
   
   
  

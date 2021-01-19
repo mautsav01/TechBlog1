@@ -129,6 +129,11 @@ rs=st.executeQuery("Select * from content where categories LIKE '%"+msgindex+"%'
                         <div id="collapse1_<%=i%>" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#bootstrap-accordion_1">
                             <div class="panel-body">
                                 <p>  <%=rs.getString("blog")%></p>
+                                <br>
+                                <!-- You can use Open Graph tags to customize link previews.
+Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+</div>
+
                 
 										
 									

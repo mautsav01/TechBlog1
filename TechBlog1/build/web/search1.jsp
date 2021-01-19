@@ -27,7 +27,6 @@
   <a href="Profile.jsp">Profile</a>
   <a href="login.jsp">Logout</a>
   
-  
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars">++</i>
   </a>
@@ -124,7 +123,7 @@ rs=st.executeQuery("Select * from content where categories lIKE '%"+msgindex+"%'
                                 %>
                                 
 	<form action="userview.jsp">
-            <input type="hidden" name="msg" value=<%=msg%>
+            <input type="hidden" name="msg" value=<%=msg%>>
 	<div class="container">
             <div class="row">
 	<div class="col">
