@@ -52,11 +52,12 @@ public class Comment extends HttpServlet {
  //  sessio.invalidate();
               HttpSession sessi=request.getSession();
             String user=  sessi.getAttribute("user").toString();
-              String b="0";
+           //   String b="0";
               
               out.print(comment+id+email+user);
       //    sessi.invalidate();
-           
+            String b=  java.time.LocalDate.now().toString();
+                    
             try {
                 Class.forName("com.mysql.jdbc.Driver");
             } catch (ClassNotFoundException ex) {
@@ -103,7 +104,8 @@ public class Comment extends HttpServlet {
             processRequest(request, response);
             PrintWriter out = response.getWriter();
             
-            
+                String b=  java.time.LocalDate.now().toString();
+        
             String comment=request.getParameter("Comment");
        //     out.print(Comment);
             String id=request.getParameter("id");
@@ -114,7 +116,7 @@ public class Comment extends HttpServlet {
  //  sessio.invalidate();
               HttpSession sessi=request.getSession();
             String user=  sessi.getAttribute("user").toString();
-              String b="0";
+            //  String b="0";
       //    sessi.invalidate();
             
             try {

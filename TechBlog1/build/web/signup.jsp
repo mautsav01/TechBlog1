@@ -72,7 +72,7 @@
                     </div>
                     <div class="signup-image">
                         <figure><img src="image/signup-image.jpg" alt="sign up image"></figure>
-                        <a href="login.jsp" class="signup-image-link">I am already member</a>
+                        <a href="enterlog.php" class="signup-image-link">I am already member</a>
                     </div>
                 </div>
           

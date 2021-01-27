@@ -49,18 +49,18 @@ msg=request.getParameter("msg");
 
 HttpSession se=request.getSession();
 msg= se.getAttribute("email").toString();
-String msg1=se.getAttribute("phone").toString();
- out.print(msg1);
+//String msg1=se.getAttribute("phone").toString();
+ //out.print(msg1);
 %>
 	
     </div>
   <div class="rightcolumn">
     <div class="card">
-<input type="text" placeholder="About me" name="aboutme">  </input> 
+<input type="text" placeholder="About me" name="aboutme">  
 <br>
 <br>
 
-<input type="text"  name="description" > </input>  
+<input type="text"  name="description" > 
 
      </div>
    
@@ -75,12 +75,12 @@ String msg1=se.getAttribute("phone").toString();
   <select name="categories">
   
  
-    <option value="AI" >Artificial Intelligence</option>
-    <option value="IT">IT and Education</option>
-    <option value="robot">Robotics</option>
-    <option value="quantum">Quantum Computer</option>
-	<option value="humanoid" >Humanoid</option>
-	<option value="ct">Communication Technology</option>
+    <option value="Artificial Intelligence" >Artificial Intelligence</option>
+    <option value="IT and Communication">IT and Education</option>
+    <option value="Robotics">Robotics</option>
+    <option value="Quantum Computing">Quantum Computer</option>
+	<option value="Humanoid" >Humanoid</option>
+	<option value="Communication Technology">Communication Technology</option>
 	
 	
   </select>
@@ -110,13 +110,12 @@ String msg1=se.getAttribute("phone").toString();
    
    <div class="footer">
    
-  <input type="text" placeholder="footer" name="footer" style="font-style:italic">  </input> 
+  <input type="text" placeholder="footer" name="footer" style="font-style:italic"> 
 
 </div>
 
 
-<input type="Submit" value="post"></input>
-
+<input type="Submit" value="post">
 
 
 

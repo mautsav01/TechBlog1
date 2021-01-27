@@ -28,7 +28,7 @@
   <a href="Profile.jsp">Profile page</a>
   <a href="search1.jsp">Search page</a>
   
-  <a href="login.jsp">Logout</a>
+  <a href="enterlog.php">Logout</a>
 <a href="https://twitter.com/intent/tweet?text=http%3A//localhost%3A8084/TechBlog1/userview.jsp?msg=<%=id%>">Share on Twitter</a>  
 
 
@@ -322,10 +322,10 @@ rs=st.executeQuery("Select * from review where id='"+id+"'");
 %> 
 <b>
    
-   <%=rs.getString("username")%>
+ <%=rs.getString("username")%>(<%=rs.getString("likkes")%>)
  
 </b><br>
-   <%=rs.getString("comment")%>
+<%=rs.getString("comment")%> 
    <br><hr>
  <%}%>
 
@@ -342,7 +342,7 @@ rs=st.executeQuery("Select * from review where id='"+id+"'");
 <button id="clickme">Views<%=" "%><%=viewcoun%></button>
 </div>
    <!here view count is displayed !>
-<      
+
        
        
 </div>

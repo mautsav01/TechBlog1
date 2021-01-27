@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -52,7 +54,9 @@ public class Blogwritter extends HttpServlet {
            //  out.print(blogname+titledescription+blog+aboutme+description+cat+privacy+footer+email);
             out.print(email);
             out.print(phone);
-            
+          //   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");  
+ 
+          String d=  java.time.LocalDate.now().toString();
         
            
             Class.forName("com.mysql.jdbc.Driver");
@@ -61,7 +65,7 @@ public class Blogwritter extends HttpServlet {
             
               PreparedStatement pst;
      
-            pst = con.prepareStatement ("Insert into content(blogname,titledescription,blog,aboutme,description,categories,privacy,footer,email) values (?,?,?,?,?,?,?,?,?)");
+            pst = con.prepareStatement ("Insert into content(blogname,titledescription,blog,aboutme,description,categories,privacy,footer,email,Date) values (?,?,?,?,?,?,?,?,?,?)");
             pst.setString(1, blogname);
             pst.setString(2, titledescription);
             pst.setString(3,blog);
@@ -71,7 +75,7 @@ public class Blogwritter extends HttpServlet {
             pst.setString(7, privacy);
             pst.setString(8, footer);
             pst.setString(9, email);
-            //pst.setString(10, phone);
+            pst.setString(10, d);
             
             int rs=pst.executeUpdate();
             if(rs>0){

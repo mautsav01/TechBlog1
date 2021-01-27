@@ -19,7 +19,7 @@
   <a href="Profile.jsp">Profile page</a>
   <a href="search1.jsp">Search page</a>
   
-  <a href="login.jsp">Logout</a>
+  <a href="enterlog.php">Logout</a>
   
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars">++</i>
@@ -30,7 +30,7 @@
     <%
     
     int id=Integer.parseInt(request.getParameter("id"));
-    out.print(id);
+   // out.print(id);
      ResultSet rs=null;
      try {
           
@@ -58,7 +58,7 @@ while(rs.next()){
 
 <form method="post" action="${pageContext.request.contextPath}/update">
 <div class="header">
-  <input type="text" placeholder="title" name="blogname" value="<%=rs.getString("blogname")%>">  </input> 
+  <input type="text" placeholder="title" name="blogname" value="<%=rs.getString("blogname")%>">  
 
 
 </div>
@@ -79,11 +79,11 @@ while(rs.next()){
     </div>
   <div class="rightcolumn">
     <div class="card">
-<input type="text" placeholder="About me" name="aboutme" value="<%=rs.getString("aboutme")%>">  </input> 
+<input type="text" placeholder="About me" name="aboutme" value="<%=rs.getString("aboutme")%>">  
 <br>
 <br>
 
-<input type="text"  name="description" value="<%=rs.getString("description")%>"> </input>  
+<input type="text"  name="description" value="<%=rs.getString("description")%>">   
 
      </div>
    
@@ -97,13 +97,14 @@ while(rs.next()){
   
   <select name="categories">
   
+    <option value="<%=rs.getString("categories")%>" ><%=rs.getString("categories")%></option>
  
-    <option value="AI" >Artificial Intelligence</option>
-    <option value="IT">IT and Education</option>
-    <option value="robot">Robotics</option>
-    <option value="quantum">Quantum Computer</option>
-	<option value="humanoid" >Humanoid</option>
-	<option value="ct">Communication Technology</option>
+    <option value="Artificial Intelligence" >Artificial Intelligence</option>
+    <option value="IT and Education">IT and Education</option>
+    <option value="Robotics">Robotics</option>
+    <option value="Quantum Computing">Quantum Computer</option>
+	<option value="Humanoid" >Humanoid</option>
+	<option value="communication Technology">Communication Technology</option>
 	
 	
   </select>
@@ -132,7 +133,7 @@ while(rs.next()){
   
    
    <div class="footer">
-   
+  <label for="publicity">Footer:</label>
   <input type="text" placeholder="footer" name="footer" style="font-style:italic" value="<%=rs.getString("footer")%>">  </input> 
 <input type="hidden" name="id" value="<%=rs.getString("id")%>">
 

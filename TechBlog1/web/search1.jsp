@@ -127,16 +127,9 @@ rs=st.executeQuery("Select * from content where categories lIKE '%"+msgindex+"%'
 	<div class="container">
             <div class="row">
 	<div class="col">
-	<button type="submit" class="btn btn-primary display-4">View more <%=rs.getString("id")%></button>
+	<button type="submit" class="btn btn-primary display-4">View more </button>
 	</div>
-	<div class="col">
-            <P>like</p></div>
-	<div class="col">
-    <P>Comment</p></div>
-		<div class="col">
-	<P>View</p>
 		</div>
-	</div>
 	</div>
     </form>
 								

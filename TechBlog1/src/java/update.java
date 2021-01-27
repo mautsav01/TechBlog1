@@ -67,14 +67,15 @@ public class update extends HttpServlet {
                     String cat=request.getParameter("categories");
                     String privacy=request.getParameter("privacy");
                     String footer=request.getParameter("footer");
-                    
+                       String d=  java.time.LocalDate.now().toString();
+                    String date="updated on:"+d;
                     
                     HttpSession sessio=request.getSession();
                     
                     String email= sessio.getAttribute("email").toString();
                     
-                    out.print(blogname+titledescription+blog+aboutme+description+cat+privacy+footer+email);
-                    out.print(a);
+               //     out.print(blogname+titledescription+blog+aboutme+description+cat+privacy+footer+email);
+                //    out.print(a);
                     
                     
                     
@@ -86,7 +87,7 @@ public class update extends HttpServlet {
                     Connection  cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/user", "root", "");
                     
                     PreparedStatement pst=null;
-                    String updateTableSQL = "UPDATE content SET blogname=?,titledescription=?,blog = ?,aboutme=?,description=?,categories=?,privacy=?,footer=?,email=? "
+                    String updateTableSQL = "UPDATE content SET blogname=?,titledescription=?,blog = ?,aboutme=?,description=?,categories=?,privacy=?,footer=?,email=?,date=? "
                             + " WHERE id = "+a+"";
                     
                     try {
@@ -103,6 +104,7 @@ public class update extends HttpServlet {
                         pst.setString(7, privacy);
                         pst.setString(8, footer);
                         pst.setString(9, email);
+                        pst.setString(10, date);
                         
                         
                         

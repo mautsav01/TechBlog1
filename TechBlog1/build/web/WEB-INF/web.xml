@@ -1,5 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  
+  <servlet>
+        <servlet-name>project</servlet-name> <!-- This name and this name must be same. -->
+        <jsp-file>/login.jsp</jsp-file> 
+  </servlet>
+ 
+        <servlet-mapping>
+        <servlet-name>project</servlet-name>
+        <url-pattern>/enterlog.php</url-pattern>
+        </servlet-mapping>
+  
+  <servlet>
+        <servlet-name>project1</servlet-name> <!-- This name and this name must be same. -->
+        <jsp-file>/signup.jsp</jsp-file>
+       </servlet>
+       
+       <servlet-mapping>
+             <servlet-name>project1</servlet-name> <!-- This name and this name must be same. -->
+           <url-pattern>/enterup.jason</url-pattern>
+    
+        </servlet-mapping>
+           
+        <servlet>
+             <servlet-name>project2</servlet-name> <!-- This name and this name must be same. -->
+       
+        <jsp-file>/search.jsp</jsp-file> 
+        </servlet>
+   
+        <servlet-mapping>
+             <servlet-name>project2</servlet-name> <!-- This name and this name must be same. -->
+           <url-pattern>/searrch.abc</url-pattern>
+    
+        </servlet-mapping>
+    
+    
     <servlet>
         <servlet-name>signup</servlet-name>
         <servlet-class>signup</servlet-class>

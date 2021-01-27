@@ -21,7 +21,7 @@
     <div class="topnav" id="myTopnav">
   <a href="Profile.jsp">Profile page</a>
   <a href="search1.jsp">Search page</a>
-     <a href="login.jsp">Logout</a>
+     <a href="enterlog.php">Logout</a>
      
   
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -98,8 +98,10 @@ while(rs.next()){
 
 
 <div class="header">
-  <h2>  <%=rs.getString("blogname")%>
-  </h2>
+    <h2>  <%=rs.getString("blogname")%></h2>
+       <h5><%=rs.getString("categories")%>
+  </h5>
+  
 </div>
 
 <div class="row">
@@ -107,7 +109,7 @@ while(rs.next()){
     <div class="card">
       <h2></h2>
       <h5> <%=rs.getString("titledescription")%></h5>
-      <p> <%=rs.getString("categories")%>
+      <p>
 </p>
       <p> <%=rs.getString("blog")%>
 </p>
@@ -133,12 +135,12 @@ while(rs.next()){
 	<div class="col-lg-12">
  <label for="categories">Categories:</label>
   <select name="categories" id="cat">
-    <option value="AI"> <%=rs.getString("categories")%></option>
-    <option value="IT">IT and Education</option>
-    <option value="robot">Robotics</option>
-    <option value="quantum">Quantum Computer</option>
-	<option value="humanoid">Humanoid</option>
-	<option value="ct">Communication Technology</option>
+    <option value="Artificial Intelligence"> <%=rs.getString("categories")%></option>
+    <option value="IT and Education">IT and Education</option>
+    <option value="Robotics">Robotics</option>
+    <option value="Quantum Computing">Quantum Computer</option>
+	<option value="Humanoid">Humanoid</option>
+	<option value="Communication Technology">Communication Technology</option>
 	
 	
   </select>
@@ -167,6 +169,7 @@ while(rs.next()){
   
    
    <div class="footer">
+       
   <h2><%=rs.getString("footer")%></h2>
 </div>
 <div class="row">
@@ -211,10 +214,11 @@ rs=st.executeQuery("Select * from review where id='"+id+"'");
 %> 
 <b>
    
-   <%=rs.getString("username")%>
+    <%=rs.getString("username")%> (<%=rs.getString("likkes")%>)
  
 </b><br>
-   <%=rs.getString("comment")%>
+<%=rs.getString("comment")%> 
+ 
    <br><hr>
  <%}%>
 
