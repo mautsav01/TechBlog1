@@ -19,10 +19,11 @@
           response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
    response.setHeader("Pragma", "no-cache");
    response.setHeader("Expires", "0");
-   
+  
     String msg3=request.getParameter("msg");
     
     if(msg3!=null){  
+       
     %>
     
     <script>
@@ -55,8 +56,10 @@
     <div class="topnav" id="myTopnav">
   <a href="blogwritter.jsp" name="email">Write a blog</a>
   <a href="search1.jsp">Search</a>
+    <a href="enterlog.php" id="blogwritter">Logout</a>
+    
   <div class="dropdown">
-    <button class="dropbtn">Filter
+    <button class="dropbtn" >Filter
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
@@ -77,12 +80,11 @@
       
     </div>
   </div> 
-
+  
   
   <%
      
   %>
-  <a href="enterlog.php" id="blogwritter">Logout</a>
   
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars">++</i>
@@ -168,7 +170,7 @@ while(rs.next()){
  
 if(search!=null){
     
-    rs=st.executeQuery("select * from content where email='"+email1+"' AND categories ='"+search+"' ");
+    rs=st.executeQuery("select * from content where email='"+email1+"' AND categories ='"+search+"'  order by date desc");
     while(rs.next())
 {          
 %>
@@ -186,6 +188,7 @@ if(search!=null){
  
     <div class="card">
       <div class="container">
+          
           <h2><%=rs.getString("blogname")%></h2> <h5 align="right"><%=rs.getString("Date")%></h5>
         <p class="title"><%=rs.getString("aboutme")%></p>
         <p><%=rs.getString("description")%></p>
@@ -193,6 +196,7 @@ if(search!=null){
        
         <p><%=rs.getString("email")%></p>
         <p><%=phone%></p>
+        
 		<form method="get" action="userprofilefull.jsp">
                     <%
                  
@@ -216,7 +220,7 @@ if(search!=null){
 //out.print(count);
 //out.print(email);
 //String q="SELECT * FROM content INNER JOIN usertbl ON  usertbl.phone='"+phone+"' AND content.email='"+email+"'";
-rs=st.executeQuery("select * from content where email='"+email+"' ");
+rs=st.executeQuery("select * from content where email='"+email+"' order by date desc");
 
 // rs=st.executeQuery(q);
 

@@ -24,7 +24,8 @@
 <body>
 
 <div class="topnav" id="myTopnav">
-  <a href="#home">Home</a>
+    
+    <a href="#home">TechBlog</a>
   <a href="enterlog.php">Login</a>
   <a href="enterup.jason">Signup</a>
   <a href="searrch.abc">Search</a>
@@ -38,12 +39,12 @@
 <br><br>
 <div class="row"> 
   <div class="col-sm-2">
-  <a href="search.jsp?msgindex=AI" style="text-decoration: none">  <img src="image/AI.png" style="width:98%"><h4> <Center>Artificial Intelligence</center></h4> </a>
+  <a href="search.jsp?msgindex=Artificial Intelligence" style="text-decoration: none">  <img src="image/AI.png" style="width:98%"><h4> <Center>Artificial Intelligence</center></h4> </a>
     
     
   </div>
   <div class="col-sm-2">
-  <a href="search.jsp?msgindex=ct" style="text-decoration: none">  <img src="image/communication.png" style="width:100%"><h4> <Center>Communication</center></h4> </a>
+  <a href="search.jsp?msgindex=Communication Technology" style="text-decoration: none">  <img src="image/communication.png" style="width:100%"><h4> <Center>Communication</center></h4> </a>
     
   </div>  
   <div class="col-sm-2">
@@ -51,16 +52,16 @@
     
   </div>
   <div class="col-sm-2">
-  <a href="search.jsp?msgindex=IT" style="text-decoration: none">  <img src="image/ITE.png" style="width:100%"> <h4> <Center>IT and Education</center></h4></a>
+  <a href="search.jsp?msgindex=IT and Communication" style="text-decoration: none">  <img src="image/ITE.png" style="width:100%"> <h4> <Center>IT and Education</center></h4></a>
     
   </div>
    <div class="col-sm-2">
-  <a href="search.jsp?msgindex=quantum" style="text-decoration: none">  <img src="image/quantum.png" style="width:90%"> <h4> <Center>Quantum Computing</center></h4></a>
+  <a href="search.jsp?msgindex=Quantum Computing" style="text-decoration: none">  <img src="image/quantum.png" style="width:90%"> <h4> <Center>Quantum Computing</center></h4></a>
     
     
   </div>
   <div class="col-sm-2">
-  <a href="search.jsp?msgindex=robot" style="text-decoration: none">  <img src="image/robotics.png" style="width:100%"> <h4> <Center>Robotics</center></h4></a>
+  <a href="search.jsp?msgindex=Robotics" style="text-decoration: none">  <img src="image/robotics.png" style="width:100%"> <h4> <Center>Robotics</center></h4></a>
     
     
     
@@ -83,7 +84,7 @@
           Connection  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/user", "root", "");
        Statement st=con.createStatement();
   
-    rs=st.executeQuery("select * from content where privacy='"+privacy+"' and id="+42);
+    rs=st.executeQuery("select * from content where privacy='"+privacy+"' and id="+9);
 
     while(rs.next()){      
   

@@ -314,7 +314,7 @@ function myFunction() {
 
 
 
-rs=st.executeQuery("Select * from review where id='"+id+"'");
+rs=st.executeQuery("Select * from review where id='"+id+"' order by likkes desc");
   while (rs.next()) {
   
 

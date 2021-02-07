@@ -58,7 +58,7 @@ while(rs.next()){
 
 <form method="post" action="${pageContext.request.contextPath}/update">
 <div class="header">
-  <input type="text" placeholder="title" name="blogname" value="<%=rs.getString("blogname")%>">  
+  <input type="text" placeholder="title" name="blogname" value="<%=rs.getString("blogname")%>" required="required">  
 
 
 </div>
@@ -67,9 +67,9 @@ while(rs.next()){
   <div class="leftcolumn">
     <div class="card">
 
-<input type="text" placeholder="Title Description" name="titledescription" value="<%=rs.getString("titledescription")%>"> </input>  
+<input type="text" placeholder="Title Description" name="titledescription" value="<%=rs.getString("titledescription")%>">   
 <br><br>
-<textarea name="blog"><%=rs.getString("blog")%></textarea>
+<textarea name="blog" required="required"><%=rs.getString("blog")%></textarea>
 
     </div>
 	

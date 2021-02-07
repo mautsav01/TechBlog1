@@ -68,7 +68,7 @@ public class update extends HttpServlet {
                     String privacy=request.getParameter("privacy");
                     String footer=request.getParameter("footer");
                        String d=  java.time.LocalDate.now().toString();
-                    String date="updated on:"+d;
+                  //  String date="updated on:"+d;
                     
                     HttpSession sessio=request.getSession();
                     
@@ -104,7 +104,7 @@ public class update extends HttpServlet {
                         pst.setString(7, privacy);
                         pst.setString(8, footer);
                         pst.setString(9, email);
-                        pst.setString(10, date);
+                        pst.setString(10, d);
                         
                         
                         

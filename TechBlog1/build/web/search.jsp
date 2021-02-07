@@ -83,7 +83,7 @@ String privacy="public";
   ResultSet rs=null;
   
    
-rs=st.executeQuery("Select * from content where categories LIKE '%"+msgindex+"%' AND privacy='"+privacy+"' OR blogname LIKE '%"+msgindex+"%' AND privacy='"+privacy+"'");
+rs=st.executeQuery("Select * from content where categories LIKE '%"+msgindex+"%' AND privacy='"+privacy+"' OR blogname LIKE '%"+msgindex+"%' AND privacy='"+privacy+"' order by date desc");
 
 
 
@@ -117,7 +117,7 @@ rs=st.executeQuery("Select * from content where categories LIKE '%"+msgindex+"%'
        
 
 
-                                        <%=rs.getString("blogname")%>
+                                        <%=rs.getString("blogname")%> <p align="right"> <%=rs.getString("date")%>
                                                                                
                                         
                                         

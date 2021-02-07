@@ -83,7 +83,7 @@ function myFunction() {
   ResultSet rs=null;
   
    
-rs=st.executeQuery("Select * from content where categories lIKE '%"+msgindex+"%' AND privacy='"+privacy+"' OR blogname LIKE '%"+msgindex+"%' AND privacy='"+privacy+"'");
+rs=st.executeQuery("Select * from content where categories lIKE '%"+msgindex+"%' AND privacy='"+privacy+"' OR blogname LIKE '%"+msgindex+"%' AND privacy='"+privacy+"' order by date desc");
 
 
 
@@ -108,7 +108,7 @@ rs=st.executeQuery("Select * from content where categories lIKE '%"+msgindex+"%'
                     <div class="card mb-3">
                         <div class="card-header" role="tab" id="headingOne">
                             <a role="button" class="panel-title collapsed" data-toggle="collapse" data-core="" href="#collapse1_<%=i%>" aria-expanded="false" aria-controls="collapse1">
-                                <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong><%=rs.getString("blogname")%></strong>
+                                <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong><%=rs.getString("blogname")%><P align="right"><%=rs.getString("date")%></P></strong>
                                 </h6>
                                 <span class="sign mbr-iconfont mbri-arrow-down"></span>
                             </a>

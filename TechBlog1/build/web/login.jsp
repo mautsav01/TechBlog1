@@ -31,9 +31,10 @@
 
                     <div class="signin-form">
 					<a href="index.jsp">
-					<img src="image\download-96x104.png"></img></a>
-                
-                        <h2 class="form-title">Login</h2>
+					
+                        <h2 class="form-title"><a href="index.jsp">
+					<img src="image\logo.png"style="width:10%"></a>
+                Login</h2>
                         <form method="POST" class="register-form" action="${pageContext.request.contextPath}/login">
                             <div class="form-group">
 							

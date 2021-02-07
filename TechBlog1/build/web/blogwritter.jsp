@@ -27,7 +27,7 @@
 
 <form method="post" action="${pageContext.request.contextPath}\Blogwritter">
 <div class="header">
-  <input type="text" placeholder="title" name="blogname">  </input> 
+    <input type="text" placeholder="title" name="blogname" required="required">  
 
 
 </div>
@@ -36,9 +36,9 @@
   <div class="leftcolumn">
     <div class="card">
 
-<input type="text" placeholder="Title Description" name="titledescription"> </input>  
+<input type="text" placeholder="Title Description" name="titledescription">  
 <br><br>
-<textarea name="blog">Write your Blog here</textarea>
+<textarea name="blog" required="required">Write your Blog here</textarea>
 
     </div>
 	
