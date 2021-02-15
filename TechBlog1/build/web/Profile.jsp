@@ -170,7 +170,7 @@ while(rs.next()){
  
 if(search!=null){
     
-    rs=st.executeQuery("select * from content where email='"+email1+"' AND categories ='"+search+"'  order by date desc");
+    rs=st.executeQuery("select * from content where email='"+email1+"' AND categories ='"+search+"'  order by date asc");
     while(rs.next())
 {          
 %>

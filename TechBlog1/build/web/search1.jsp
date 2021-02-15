@@ -83,7 +83,8 @@ function myFunction() {
   ResultSet rs=null;
   
    
-rs=st.executeQuery("Select * from content where categories lIKE '%"+msgindex+"%' AND privacy='"+privacy+"' OR blogname LIKE '%"+msgindex+"%' AND privacy='"+privacy+"' order by date desc");
+rs=st.executeQuery("Select * from content where categories lIKE '%"+msgindex+"%' "
+        + "AND privacy='"+privacy+"' OR blogname LIKE '%"+msgindex+"%' AND privacy='"+privacy+"' order by date desc");
 
 
 

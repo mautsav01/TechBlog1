@@ -84,7 +84,7 @@
           Connection  con = DriverManager.getConnection("jdbc:mysql://localhost:3306/user", "root", "");
        Statement st=con.createStatement();
   
-    rs=st.executeQuery("select * from content where privacy='"+privacy+"' and id="+9);
+    rs=st.executeQuery("select * from content where privacy='"+privacy+"' and id="+1);
 
     while(rs.next()){      
   
@@ -118,7 +118,7 @@
         ///    out.println(rand); 
    
     
-   rs=st.executeQuery("select * from content where privacy='"+privacy+"' AND id="+10);
+   rs=st.executeQuery("select * from content where privacy='"+privacy+"' AND id="+6);
 
     while(rs.next()){      
     
@@ -157,5 +157,4 @@ function myFunction() {
 }
 </script>
 
-</body>
 </html>

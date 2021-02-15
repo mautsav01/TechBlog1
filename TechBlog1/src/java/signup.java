@@ -43,7 +43,7 @@ public class signup extends HttpServlet {
         try {
             processRequest(request, response);
              
-            out.print("what");
+        //    out.print("what");
             String username=request.getParameter("username").toString();
             String email=request.getParameter("email").toString();
             String phone=request.getParameter("phone").toString();
