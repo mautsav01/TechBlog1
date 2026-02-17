@@ -36,11 +36,6 @@ out.print(email);
             }else{
                 out.print("sww");
             } 
-                    
-                    
-                 
-                    
-                    
               
 %>
          
